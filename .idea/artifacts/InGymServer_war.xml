@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="InGymServer:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="InGymServer.war">
+      <element id="artifact" artifact-name="InGymServer:war exploded" />
+    </root>
+  </artifact>
+</component>
