@@ -50,4 +50,18 @@ public class UserService {
     public User updateNickname(String newNickname, String userID) {
         return userDao.updateNickname(newNickname, userID);
     }
+
+	/**
+	 * 用DAO层修改登陆密码
+	 * @param user
+	 */
+	public void updatePassword(User user) {
+		userDao.updatePassword(user);
+	}
+
+	/* 在service层就要写上面那样
+	public void updatePassword(String id, String password) {
+		userDao.updatePassword(id, password);
+	}*/
+
 }

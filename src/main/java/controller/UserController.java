@@ -32,6 +32,7 @@ public class UserController {
     @RequestMapping(path = "/register")
     @ResponseBody
     public ResponseObject<String> register(@RequestBody User user){
+//        System.out.println(user.toString());
         // 获取判断用户注册的用户名是否已存在方法的返回值
         User exist = userService.searchUnique(user.getUsername());
         // 如果返回值不为空则表示用户名已存在，不允许注册
@@ -94,12 +95,19 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(path = "/modify_password")
-    public ResponseObject<String> modifyPassword(@RequestParam("user_id") String userID,
-												 @RequestParam("old_password") String oldPassword,
-                                                 @RequestParam("new_password") String newPassword) {
+    public ResponseObject<String> modifyPassword(@RequestBody User user) {
+        // 获取用户ID和用户要修改的密码
+        String id = user.getId();
+        String password = user.getLoginPwd();
+        if (id != null && password != null) {
+//            userService.updatePassword(id, password); 用该方式传递参数会出错
+            userService.updatePassword(user);
+            return  new ResponseObject<String>("密码修改成功！", 1);
+        } else {
+            return new ResponseObject<String>("修改出错！", 0);
+        }
 
-
-        return null;
     }
+
 
 }

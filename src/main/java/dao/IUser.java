@@ -56,4 +56,16 @@ public interface IUser {
 	 */
 	@Select("update mi_user set `user_nickname` = #{newNickname} where `user_id` = #{userID}")
     User updateNickname(@Param("newNickname") String newNickname, @Param("userID") String userID);
+
+	/**
+	 * 更新用户登陆密码
+	 * @param user
+	 */
+	@Select("update mi_user set `user_login_pwd` = #{user.loginPwd} where `user_id` = #{user.id}")
+	void updatePassword(@Param("user") User user);
+
+	/* DAO层就要写上面那样
+	@Select("update mi_user set `user_login_pwd` = #{password} where `user_id` = #{id}")
+	void updatePassword(String id, String password);
+	*/
 }
