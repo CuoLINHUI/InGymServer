@@ -106,8 +106,14 @@ public class UserController {
         } else {
             return new ResponseObject<String>("修改出错！", 0);
         }
-
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/bind_phone")
+    public ResponseObject<String> bindPhone(@RequestParam("phone_number") String phoneNumber,
+                                               @RequestParam("user_id") String userID) {
+            userService.bindPhone(phoneNumber, userID);
+            return new ResponseObject<String>("绑定成功！", 1);
+    }
 
 }

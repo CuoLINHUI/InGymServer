@@ -52,7 +52,7 @@ public class UserService {
     }
 
 	/**
-	 * 用DAO层修改登陆密码
+	 * 调用DAO层修改登陆密码
 	 * @param user
 	 */
 	public void updatePassword(User user) {
@@ -63,5 +63,14 @@ public class UserService {
 	public void updatePassword(String id, String password) {
 		userDao.updatePassword(id, password);
 	}*/
+
+	/**
+	 * 调用DAO层绑定手机号
+	 * @param phoneNumber
+	 * @param userID
+	 */
+	public void bindPhone(String phoneNumber, String userID) {
+		userDao.bindPhone(phoneNumber, userID);
+	}
 
 }

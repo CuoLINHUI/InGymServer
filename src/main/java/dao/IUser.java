@@ -68,4 +68,13 @@ public interface IUser {
 	@Select("update mi_user set `user_login_pwd` = #{password} where `user_id` = #{id}")
 	void updatePassword(String id, String password);
 	*/
+
+	/**
+	 * 绑定手机号
+	 * @param phoneNumber
+	 * @param userID
+	 */
+	@Select("update mi_user set `user_tel` = #{phoneNumber} where `user_id` = #{userID}")
+	void bindPhone(@Param("phoneNumber") String phoneNumber, @Param("userID") String userID);
+
 }
