@@ -64,6 +64,10 @@ public class UserService {
 		userDao.updatePassword(id, password);
 	}*/
 
+	public void setPayment(User user) {
+		userDao.setPayment(user);
+	}
+
 	/**
 	 * 调用DAO层绑定手机号
 	 * @param phoneNumber
@@ -72,5 +76,6 @@ public class UserService {
 	public void bindPhone(String phoneNumber, String userID) {
 		userDao.bindPhone(phoneNumber, userID);
 	}
+
 
 }

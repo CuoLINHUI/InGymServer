@@ -44,7 +44,12 @@ public interface IUser {
             @Result(property="loginPwd", column="user_login_pwd"),
             @Result(property="headUrl", column="user_head_url"),
             @Result(property="nickname", column="user_nickname"),
+            @Result(property="gender", column="user_gender"),
+            @Result(property="tel", column="user_tel"),
+            @Result(property="payPwd", column="user_pay_pwd"),
+            @Result(property="email", column="user_email"),
             @Result(property="integral", column="user_integral"),
+            @Result(property="address", column="user_address"),
     })
     User loginVerification(@Param("user") User user);
 
@@ -70,11 +75,19 @@ public interface IUser {
 	*/
 
 	/**
+	 * 更新用户支付密码
+	 * @param user
+	 */
+	@Select("update mi_user set `user_pay_pwd` = #{user.payPwd} where `user_id` = #{user.id}")
+	void setPayment(@Param("user")User user);
+
+	/**
 	 * 绑定手机号
 	 * @param phoneNumber
 	 * @param userID
 	 */
 	@Select("update mi_user set `user_tel` = #{phoneNumber} where `user_id` = #{userID}")
 	void bindPhone(@Param("phoneNumber") String phoneNumber, @Param("userID") String userID);
+
 
 }

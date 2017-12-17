@@ -109,6 +109,19 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/set_payment")
+    public ResponseObject<String> setPayment(@RequestBody User user) {
+        String id = user.getId();
+        String payPwd = user.getPayPwd();
+        if (id != null && payPwd != null) {
+            userService.setPayment(user);
+            return  new ResponseObject<String>("设置支付密码成功！", 1);
+        } else {
+            return new ResponseObject<String>("设置支付密码出错！", 0);
+        }
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/bind_phone")
     public ResponseObject<String> bindPhone(@RequestParam("phone_number") String phoneNumber,
                                                @RequestParam("user_id") String userID) {

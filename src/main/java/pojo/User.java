@@ -20,6 +20,7 @@ public class User {
     private String integral;    // 积分
     private String headUrl;    // 用户头像地址
     private String nickname;    // 用户昵称
+    private String address;     // 用户收货地址
 
     public String getId() {
         return id;
@@ -99,6 +100,14 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
