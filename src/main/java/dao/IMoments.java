@@ -65,11 +65,11 @@ public interface IMoments {
 	})
 	List<MomentItem> loadMoments(@Param("start") int start, @Param("offset") int offset);
 
-	@Select("select * from mi_user where `user_id`=#{momentID}")
+	@Select("select * from mi_user where `user_id`= #{momentID}")
 	@Results({
 			@Result(id=true, property="id", column="user_id"),
 			@Result(property="nickname", column="user_nickname"),
 			@Result(property="headUrl", column="user_head_url"),
 	})
-	User getUserByMomentId(@Param("momentID")String momentID);
+	User getUserByMomentId(@Param("momentID") String momentID);
 }
