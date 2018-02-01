@@ -78,4 +78,27 @@ public interface IGoods {
             @Result(property="goods", column="collection_goods_id", many = @Many(select = "dao.IGoods.findGoodsById")),
     })
     List<Collections> loadCollections(@Param("start") int start, @Param("offset") int offset);
+
+    /**
+     * 根据传递的size大小，查询下拉加载的最新数据
+     * @param start
+     * @param offset
+     * @return
+     */
+    @Select("select * from com_product limit #{start}, #{offset}")
+    @Results({
+            @Result(id=true, property="id", column="product_id"),
+            @Result(property="category_id", column="category_id"),
+            @Result(property="title", column="product_title"),
+            @Result(property="sort_title", column="product_sort_title"),
+            @Result(property="imageURL", column="product_image"),
+            @Result(property="bigPicURL", column="product_big_pic"),
+            @Result(property="value", column="product_value"),
+            @Result(property="price", column="product_price"),
+            @Result(property="payments", column="product_payments"),
+            @Result(property="stock", column="product_stock"),
+            @Result(property="details", column="product_details"),
+            @Result(property="integral", column="product_integral"),
+    })
+    List<Goods> shoppingMall(@Param("start") int start, @Param("offset") int offset);
 }

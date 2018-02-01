@@ -55,7 +55,17 @@ public class GoodsService {
 //           String goodsID = goodsItem.getId();
 //            Goods goods = goodsDao.findGoodsById(goodsID);
 //        }
-
         return goodsItems;
     }
+
+    /**
+     * 加载商品数据
+     * @param page
+     * @param size
+     * @return
+     */
+    public List<Goods> shoppingMall(int page , int size) {
+        return goodsDao.shoppingMall((page - 1) * size, page * size);
+    }
+
 }

@@ -39,9 +39,7 @@ public class GoodsController {
          * 获取客户端传递过来的请求数据
          */
         ResponseObject result;
-
         List<Goods> goods = goodsService.loadGoods(page, size, category);
-
         if (goods != null) {
             result = new ResponseObject(1, goods);
             result.setPage(page);
@@ -49,7 +47,6 @@ public class GoodsController {
         } else {
             result = new ResponseObject(0, "获取商品信息失败");
         }
-
         return result;
     }
 
@@ -62,12 +59,10 @@ public class GoodsController {
     @ResponseBody
     @RequestMapping(path = "/collection_goods")
     public ResponseObject<String> collectionSave(@RequestParam("user_id") String userID ,@RequestParam("goods_id") String goodsID) {
-
         if(userID != null && goodsID != null) {
             goodsService.goodsCollection(userID, goodsID);
             return  new ResponseObject<String>("收藏成功", 1);
         }
-
         return new ResponseObject<String>("收藏失败", 0);
     }
 
@@ -100,7 +95,30 @@ public class GoodsController {
         } else {
             result = new ResponseObject(0, "获取收藏信息失败");
         }
+        return result;
+    }
 
+    /**
+     * 查询所有装备商品
+     * @param page  页码
+     * @param size  请求数据量大小
+     * @return 返回查询结果
+     */
+    @ResponseBody
+    @RequestMapping(path = "/shopping_mall")
+    public ResponseObject<Goods> shoppingMall(@RequestParam("page") int page, @RequestParam("size") int size ) {
+        /**
+         * 获取客户端传递过来的请求数据
+         */
+        ResponseObject result;
+        List<Goods> goods = goodsService.shoppingMall(page, size);
+        if (goods != null) {
+            result = new ResponseObject(1, goods);
+            result.setPage(page);
+            result.setSize(size);
+        } else {
+            result = new ResponseObject(0, "获取商品信息失败！");
+        }
         return result;
     }
 
