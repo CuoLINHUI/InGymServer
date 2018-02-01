@@ -89,5 +89,11 @@ public interface IUser {
 	@Select("update mi_user set `user_tel` = #{phoneNumber} where `user_id` = #{userID}")
 	void bindPhone(@Param("phoneNumber") String phoneNumber, @Param("userID") String userID);
 
+	/**
+	 * 更新用户支付密码
+	 * @param user
+	 */
+	@Select("update mi_user set `user_integral` = #{user.integral} where `user_id` = #{user.id}")
+	void updateIntegral(@Param("user")User user);
 
 }

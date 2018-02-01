@@ -122,11 +122,32 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/modify_payment")
+    public ResponseObject<String> modifyPayment(@RequestBody User user) {
+        // 获取用户ID和用户要修改的支付密码
+        String id = user.getId();
+        String payment = user.getPayPwd();
+        if (id != null && payment != null) {
+            userService.updatePayment(user);
+            return  new ResponseObject<String>("修改支付密码修改成功！", 1);
+        } else {
+            return new ResponseObject<String>("修改出错！", 0);
+        }
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/bind_phone")
     public ResponseObject<String> bindPhone(@RequestParam("phone_number") String phoneNumber,
                                                @RequestParam("user_id") String userID) {
             userService.bindPhone(phoneNumber, userID);
             return new ResponseObject<String>("绑定成功！", 1);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/update_integral")
+    public ResponseObject<String> updateIntegral(@RequestBody User user) {
+        userService.updateIntegral(user);
+        return  new ResponseObject<String>("更新积分成功！", 1);
     }
 
 }

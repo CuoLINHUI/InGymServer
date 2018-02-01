@@ -69,6 +69,14 @@ public class UserService {
 	}
 
 	/**
+	 * 调用DAO层修改支付密码
+	 * @param user
+	 */
+	public void updatePayment(User user) {
+		userDao.setPayment(user);
+	}
+
+	/**
 	 * 调用DAO层绑定手机号
 	 * @param phoneNumber
 	 * @param userID
@@ -77,5 +85,12 @@ public class UserService {
 		userDao.bindPhone(phoneNumber, userID);
 	}
 
+	/**
+	 * 调用DAO层修改积分
+	 * @param user
+	 */
+	public void updateIntegral(User user) {
+		userDao.updateIntegral(user);
+	}
 
 }
