@@ -72,4 +72,20 @@ public interface IMoments {
 			@Result(property="headUrl", column="user_head_url"),
 	})
 	User getUserByMomentId(@Param("momentID") String momentID);
+
+	/**
+	 * 插入用户动态内容到数据库
+	 * @param momentItem
+	 */
+	@Insert("insert into com_moment (`user_id`, `moment_content`) values(#{moment.user.id}, #{moment.content})")
+	@Options(useGeneratedKeys =true,keyProperty = "moment.id",keyColumn ="moment_id" )
+	void uploadMoments(@Param("moment") MomentItem momentItem);
+
+	/**
+	 * 插入用户动态图片到数据库
+	 * @param photoInfo
+	 */
+	@Insert("insert into com_moment_photoinfo (`user_id`, `moment_id`, `photo_url`, `photo_width`, `photo_height`) values(#{photoInfo.userId}, #{photoInfo.momentId}, #{photoInfo.url}, #{photoInfo.w}, #{photoInfo.h})")
+	void uploadMomentsPic(@Param("photoInfo") PhotoInfo photoInfo);
+
 }
