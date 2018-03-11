@@ -62,6 +62,7 @@ public interface IMoments {
 			@Result(id=true, property="id", column="moment_id"),
 			@Result(property="content", column="moment_content"),
 			@Result(property="createTime", column="moment_time"),
+			@Result(property="user", column="user_id", one = @One(select = "dao.IMoments.getUserByMomentId")),
 	})
 	List<MomentItem> loadMoments(@Param("start") int start, @Param("offset") int offset);
 
@@ -70,6 +71,8 @@ public interface IMoments {
 			@Result(id=true, property="id", column="user_id"),
 			@Result(property="nickname", column="user_nickname"),
 			@Result(property="headUrl", column="user_head_url"),
+			@Result(property="gender", column="user_gender"),
+
 	})
 	User getUserByMomentId(@Param("momentID") String momentID);
 

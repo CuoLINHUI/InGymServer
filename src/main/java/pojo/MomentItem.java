@@ -110,4 +110,22 @@ public class MomentItem {
 		return this.isExpand;
 	}
 
+	@Override
+	public String toString() {
+		return "MomentItem{" +
+				"id='" + id + '\'' +
+				", content='" + content + '\'' +
+				", createTime='" + createTime + '\'' +
+				", type='" + type + '\'' +
+				", linkImg='" + linkImg + '\'' +
+				", linkTitle='" + linkTitle + '\'' +
+				", photos=" + photos +
+				", favorters=" + favorters +
+				", comments=" + comments +
+				", user=" + user +
+				", videoUrl='" + videoUrl + '\'' +
+				", videoImgUrl='" + videoImgUrl + '\'' +
+				", isExpand=" + isExpand +
+				'}';
+	}
 }

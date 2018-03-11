@@ -35,6 +35,8 @@ public class MomentsController {
     @ResponseBody
     public ResponseObject<List<MomentItem>> getMoments(@RequestParam("page") int page, @RequestParam("size") int size){
         List<MomentItem> momentItemList = momentsService.getMoments(page, size);
+        for (int i = 0; i < momentItemList.size(); i++)
+            System.out.print("momentItemList:" + momentItemList.get(i).toString());
         return new ResponseObject<List<MomentItem>>("ok", 1, momentItemList);
     }
 
